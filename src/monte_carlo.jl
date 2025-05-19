@@ -338,7 +338,7 @@ function load_fair_monte_carlo(n_samples::Int;
     #Calculate thermal decay factors, defined as exp(-1/d).
     thermal_decay_factors = exp.(-1.0 ./ Array(thermal_params[:,[:d1,:d2,:d3]]))
 
-    function prepare_instance(fair_instance::ModelInstance, i::Int64)
+    function prepare_instance(fair_instance::Mimi.ModelInstance, i::Int64)
         # ---- Global Temperature Anomaly ---- #
         update_param!(fair_instance, :temperature, :decay_factor, thermal_decay_factors[i,:])
         update_param!(fair_instance, :temperature, :q, Array(thermal_params[i,[:q1,:q2,:q3]]))
